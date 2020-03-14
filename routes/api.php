@@ -19,7 +19,7 @@ Route::get('cidadaos', 'CidadaoController@index');
 
 // lidando com tentativas de acessar o endpoint através de outros métodos
 Route::post('cidadaos', 'CidadaoController@indexErro');
-Route::path('cidadaos', 'CidadaoController@indexErro');
+Route::patch('cidadaos', 'CidadaoController@indexErro');
 Route::put('cidadaos', 'CidadaoController@indexErro');
 Route::delete('cidadaos', 'CidadaoController@indexErro');
 
