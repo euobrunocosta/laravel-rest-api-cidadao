@@ -4,7 +4,7 @@ Uma REST API desenvolvida com Laravel em PHP e MYSQL para o banco de dados.
 
 Migrations e Seeders estão incluídas no código.
 
-Edite o arquivo .env incluído com suas credenciais para o banco de dados.
+Use o arquivo `.env.example` para inserir as credenciais do seu banco de dados e depois remova o `.example`.
 
 # Como utilizar?
 
