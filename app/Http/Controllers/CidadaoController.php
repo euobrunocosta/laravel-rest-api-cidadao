@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Http\Resources\Cidadao as CidadaoResource;
 use App\Repositories\BaseRepository;
 use App\Services\CidadaoService;
+use Illuminate\Http\Request;
 
 class CidadaoController extends Controller
 {
@@ -15,8 +15,8 @@ class CidadaoController extends Controller
 
     public function __construct(BaseRepository $baseRepository, CidadaoService $cidadaoService)
     {
-       $this->baseRepository = $baseRepository;
-       $this->cidadaoService = $cidadaoService;
+        $this->baseRepository = $baseRepository;
+        $this->cidadaoService = $cidadaoService;
     }
 
     /**
@@ -61,13 +61,13 @@ class CidadaoController extends Controller
 
         $cidadao = $this->cidadaoService->criaCidadao($request, $cidadao);
 
-        if($this->baseRepository->salva($cidadao)) {
+        if ($this->baseRepository->salva($cidadao)) {
             return new CidadaoResource($cidadao);
         }
     }
 
     /**
-     * Altera os dados do cidadão cujo cpf 
+     * Altera os dados do cidadão cujo cpf
      * é igual ao informado
      *
      * @param  \Illuminate\Http\Request $request
@@ -82,13 +82,13 @@ class CidadaoController extends Controller
 
         $cidadao = $this->cidadaoService->criaCidadao($request, $cidadao);
 
-        if($this->baseRepository->salva($cidadao)) {
+        if ($this->baseRepository->salva($cidadao)) {
             return new CidadaoResource($cidadao);
         }
     }
 
     /**
-     * Retorna os dados do cidadão cujo cpf 
+     * Retorna os dados do cidadão cujo cpf
      * é igual ao informado
      *
      * @param  string  $cpf
@@ -117,7 +117,7 @@ class CidadaoController extends Controller
     }
 
     /**
-     * 'Joga' uma exception mencionando que o 
+     * 'Joga' uma exception mencionando que o
      * CPF do cidadão não foi informado
      *
      * @return void

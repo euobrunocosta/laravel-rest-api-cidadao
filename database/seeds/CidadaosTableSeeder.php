@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Seeder;
 use App\Cidadao;
+use Illuminate\Database\Seeder;
 
 class CidadaosTableSeeder extends Seeder
 {

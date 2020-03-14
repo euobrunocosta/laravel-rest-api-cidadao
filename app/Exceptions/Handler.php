@@ -2,9 +2,9 @@
 
 namespace App\Exceptions;
 
+use App\Exceptions\CidadaoEncontradoException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;
-use App\Exceptions\CidadaoEncontradoException;
 
 class Handler extends ExceptionHandler
 {
@@ -53,37 +53,37 @@ class Handler extends ExceptionHandler
     {
         if ($exception instanceof CidadaoEncontradoException) {
             return response()->json([
-                'error' => 'Cidadão com CPF já cadastrado'
+                'error' => 'Cidadão com CPF já cadastrado',
             ], 403);
         }
         if ($exception instanceof CidadaosNaoEncontradoException) {
             return response()->json([
-                'error' => 'Sem cidadãos registrados no banco de dados!'
+                'error' => 'Sem cidadãos registrados no banco de dados!',
             ], 400);
         }
         if ($exception instanceof RotaIndisponivelException) {
             return response()->json([
-                'error' => 'Rota disponível apenas para o método GET'
+                'error' => 'Rota disponível apenas para o método GET',
             ], 400);
         }
         if ($exception instanceof CidadaoNaoEncontradoException) {
             return response()->json([
-                'error' => 'Nenhum cidadão com o CPF informado encontrado no banco de dados'
+                'error' => 'Nenhum cidadão com o CPF informado encontrado no banco de dados',
             ], 400);
         }
         if ($exception instanceof CPFNaoInformadoException) {
             return response()->json([
-                'error' => 'O CPF do cidadão não foi informado'
+                'error' => 'O CPF do cidadão não foi informado',
             ], 400);
         }
         if ($exception instanceof ValidacaoFalhaException) {
             return response()->json([
-                'error' => 'Erro na validação de algum(uns) dos itens repassados'
+                'error' => 'Erro na validação de algum(uns) dos itens repassados',
             ], 400);
         }
         if ($exception instanceof CEPNaoEncontradoException) {
             return response()->json([
-                'error' => 'CEP não encontrado'
+                'error' => 'CEP não encontrado',
             ], 400);
         }
         return parent::render($request, $exception);

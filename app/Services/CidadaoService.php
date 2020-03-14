@@ -1,12 +1,13 @@
 <?php
 
 namespace App\Services;
+
 use App\Cidadao;
-use Validator;
-use App\Exceptions\RotaIndisponivelException;
-use App\Exceptions\CPFNaoInformadoException;
-use App\Exceptions\ValidacaoFalhaException;
 use App\Exceptions\CEPNaoEncontradoException;
+use App\Exceptions\CPFNaoInformadoException;
+use App\Exceptions\RotaIndisponivelException;
+use App\Exceptions\ValidacaoFalhaException;
+use Validator;
 
 class CidadaoService
 {
@@ -14,10 +15,10 @@ class CidadaoService
      * Método chamado para 'jogar' uma exception
      * mencionando que a rota não está disponível
      * para o método utilizado
-     * 
+     *
      * @return void
      */
-    public function rotaIndisponivel():void
+    public function rotaIndisponivel(): void
     {
         throw new RotaIndisponivelException();
     }
@@ -26,10 +27,10 @@ class CidadaoService
      * Método chamado para 'jogar' uma exception
      * mencionando que o CPF do cidadão não
      * foi repassado
-     * 
+     *
      * @return void
      */
-    public function cpfNaoInformado():void
+    public function cpfNaoInformado(): void
     {
         throw new CPFNaoInformadoException();
     }
@@ -40,7 +41,7 @@ class CidadaoService
      * @param  mixed  $cpf
      * @return int
      */
-    public function intCPF($cpf):int
+    public function intCPF($cpf): int
     {
         return (int) $cpf;
     }
@@ -53,7 +54,7 @@ class CidadaoService
      * @param  array  $informacoes
      * @return void
      */
-    public function validaInformacoes(array $informacoes):void
+    public function validaInformacoes(array $informacoes): void
     {
         $validator = Validator::make($informacoes, [
             'nome' => 'required|string',
@@ -62,7 +63,7 @@ class CidadaoService
             'telefone' => 'required|digits_between:8,15',
             'email' => 'required|email',
             'celular' => 'required|digits_between:8,15',
-            'cep' => 'required|digits:8'
+            'cep' => 'required|digits:8',
         ]);
 
         if ($validator->fails()) {
@@ -77,7 +78,7 @@ class CidadaoService
      * @param  string  $cep
      * @return object
      */
-    private function getEndereco(string $cep):object
+    private function getEndereco(string $cep): object
     {
         $endereco = json_decode(file_get_contents("https://viacep.com.br/ws/{$cep}/json/"));
         if (isset($endereco->erro)) {
@@ -94,7 +95,7 @@ class CidadaoService
      * @param Cidadao $cidadao
      * @return Cidadao
      */
-    public function criaCidadao(\Illuminate\Http\Request $request, Cidadao $cidadao):Cidadao
+    public function criaCidadao(\Illuminate\Http\Request $request, Cidadao $cidadao): Cidadao
     {
         $cidadao->nome = $request->input('nome');
         $cidadao->sobrenome = $request->input('sobrenome');

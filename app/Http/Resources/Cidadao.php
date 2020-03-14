@@ -26,7 +26,7 @@ class Cidadao extends JsonResource
             'logradouro' => $this->logradouro,
             'bairro' => $this->bairro,
             'cidade' => $this->cidade,
-            'uf' => $this->uf
+            'uf' => $this->uf,
         ];
     }
 }

@@ -2,11 +2,11 @@
 
 namespace App\Repositories;
 
-use App\Repositories\EloquentRepositoryInterface;
 use App\Cidadao;
 use App\Exceptions\CidadaoEncontradoException;
-use App\Exceptions\CidadaosNaoEncontradoException;
 use App\Exceptions\CidadaoNaoEncontradoException;
+use App\Exceptions\CidadaosNaoEncontradoException;
+use App\Repositories\EloquentRepositoryInterface;
 use App\Services\CidadaoService;
 
 class BaseRepository implements EloquentRepositoryInterface
@@ -16,7 +16,7 @@ class BaseRepository implements EloquentRepositoryInterface
 
     public function __construct(CidadaoService $cidadaoService)
     {
-       $this->cidadaoService = $cidadaoService;
+        $this->cidadaoService = $cidadaoService;
     }
 
     /**
@@ -25,7 +25,7 @@ class BaseRepository implements EloquentRepositoryInterface
      *
      * @return object
      */
-    public function cidadaosOrdenados():object
+    public function cidadaosOrdenados(): object
     {
         $cidadaos = Cidadao::orderBy('nome')->get();
         if (count($cidadaos) == 0) {
@@ -41,7 +41,7 @@ class BaseRepository implements EloquentRepositoryInterface
      * @param  mixed  $cpf
      * @return bool
      */
-    public function cidadaoExiste($cpf):bool
+    public function cidadaoExiste($cpf): bool
     {
         $cpf = $this->cidadaoService->intCPF($cpf);
         $cidadao = $this->cidadao($cpf, $store = true);
@@ -62,7 +62,7 @@ class BaseRepository implements EloquentRepositoryInterface
     public function cidadao($cpf, bool $store = false)
     {
         $cpf = $this->cidadaoService->intCPF($cpf);
-        $cidadao =  Cidadao::where('cpf', $cpf)->first();
+        $cidadao = Cidadao::where('cpf', $cpf)->first();
         if (!$cidadao && !$store) {
             throw new CidadaoNaoEncontradoException();
         }
@@ -74,7 +74,7 @@ class BaseRepository implements EloquentRepositoryInterface
      *
      * @return Cidadao
      */
-    public function novoCidadao():Cidadao
+    public function novoCidadao(): Cidadao
     {
         return new Cidadao;
     }
@@ -87,7 +87,7 @@ class BaseRepository implements EloquentRepositoryInterface
      * @param  Cidadao  $cidadao
      * @return bool
      */
-    public function remove(Cidadao $cidadao):bool
+    public function remove(Cidadao $cidadao): bool
     {
         return $cidadao->delete();
     }
@@ -100,9 +100,9 @@ class BaseRepository implements EloquentRepositoryInterface
      * @param  Cidadao  $cidadao
      * @return bool
      */
-    public function salva(Cidadao $cidadao):bool
+    public function salva(Cidadao $cidadao): bool
     {
         return $cidadao->save();
     }
-  
+
 }
