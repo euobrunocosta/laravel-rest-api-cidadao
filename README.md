@@ -11,7 +11,7 @@ Use o arquivo `.env.example` para inserir as credenciais do seu banco de dados e
 ## Listar cidadãos
 
 ```
-GET request -> /cidadaos/
+GET request -> /api/cidadaos/
 ```
 
 Retornará uma lista com todos os cidadãos registrados no banco de dados em ordem alfabética crescente.
@@ -23,7 +23,7 @@ Retornará uma lista com todos os cidadãos registrados no banco de dados em ord
 ## Consultar cidadão
 
 ```
-GET request -> /cidadao/<cpf-do-cidadao>
+GET request -> /api/cidadao/<cpf-do-cidadao>
 ```
 
 Retornará todas as informações do cidadão cujo número do CPF seja igual ao informado.
@@ -36,7 +36,7 @@ Retornará todas as informações do cidadão cujo número do CPF seja igual ao 
 ## Inserir cidadão
 
 ```
-POST request -> /cidadao/
+POST request -> /api/cidadao/
 {
 	"nome": "José",
 	"sobrenome": "Silva",
@@ -60,7 +60,7 @@ Os dados passados serão inseridos no banco de dados caso já não exista um cid
 ## Edição de dados do cidadão
 
 ```
-PUT ou PATCH request -> /cidadao/<cpf-do-cidadao>
+PUT ou PATCH request -> /api/cidadao/<cpf-do-cidadao>
 {
 	"nome": "João",
 	"sobrenome": "Silva",
@@ -84,7 +84,7 @@ Possibilita a alteração de quaisquer dados dos listados acima do cidadão cujo
 ## Exclusão de cidadão
 
 ```
-DELETE request -> /cidadao/<cpf-do-cidadao>
+DELETE request -> /api/cidadao/<cpf-do-cidadao>
 ```
 
 Remove o registro de um cidadão do banco de dados.
